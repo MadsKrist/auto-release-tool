@@ -1,0 +1,3 @@
+{
+    "code-runner.customCommand": "uv run src/auto_release_tool/main.py"
+}

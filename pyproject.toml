@@ -1,20 +1,17 @@
 
 [project]
 name = "auto-release-tool"
-version = "version = "1.0.0""
+version = "1.0.0"
+
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "rich>=version = "1.0.0"",
-    "typer>=version = "1.0.0"",
+    "rich>=13.9.4",
+    "typer>=0.15.2",
 ]
 
 
-
-[build-system]
-requires = ["poetry-core>=version = "1.0.0""]
-build-backend = "poetry.core.masonry.api"
 
 
 [tool.black]
