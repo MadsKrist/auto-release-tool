@@ -5,7 +5,7 @@ from rich.console import Console
 from typer import Option
 from typing_extensions import Annotated
 
-from auto_release_tool.tools import VersionManager
+from auto_release_tool import VersionManager
 
 app = typer.Typer()
 con = Console()
