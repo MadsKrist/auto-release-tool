@@ -2,10 +2,12 @@ from typing import List, Optional, Dict, Any, Sequence
 from rich.console import Console
 from dataclasses import dataclass
 
+from abc import ABC, abstractmethod
+
 from auto_release_tool.data import Step, StepResult
 
 
-class ProcessManager:
+class ProcessManager(ABC):
     """
     A base class for managing multi-step processes.
     Provides a framework for defining, executing, and logging process steps
@@ -22,6 +24,7 @@ class ProcessManager:
         self._con = console or Console()
         self._results: List[StepResult] = []
 
+    @abstractmethod
     def _get_steps(self) -> List[Step]:
         """
         Define the steps to be executed in the process.
@@ -30,8 +33,9 @@ class ProcessManager:
         Returns:
             List[Step]: List of Step objects defining the process
         """
-        return []
+        pass
 
+    @abstractmethod
     def _validate_input(self, *args, **kwargs) -> StepResult:
         """
         Validate inputs before running the process.
@@ -40,10 +44,7 @@ class ProcessManager:
         Returns:
             StepResult: Result of the validation step
         """
-        # Create a dummy Step for validation
-        validation_step = Step(func=lambda *args, **kwargs: True, description="Input validation")
-
-        return StepResult(step=validation_step, success=True, message="Input validation passed")
+        pass
 
     def _execute_step(self, step: Step, *args, **kwargs) -> StepResult:
         """
